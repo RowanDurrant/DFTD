@@ -1,3 +1,5 @@
+library(raster)
+
 densities = list()
   map = brick("predictionStack_devils_1985to2035.tif")
 
