@@ -1,8 +1,6 @@
 library(ggplot2)
 library(viridis)
 library(extrafont)
-library(patchwork)
-library(beepr)
 
 ContactDistances = c(0.1,0.2,0.3,0.4,0.5)
 DispersalProbabilities = c(0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01)
@@ -19,8 +17,8 @@ for(A in ContactDistances){
     for(C in BP){
       for(D in R){
         
-        if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda")) == T){
-          load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda"))
+        if(file.exists(paste0("100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda")) == T){
+          load(paste0("100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda"))
           
           popultotal = rep(0,1820)
           infectedstotal = rep(0,1820)
@@ -98,7 +96,3 @@ g3 = g3 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance",
   geom_errorbar(aes(ymin=MeanInfPops-InfPopSE, ymax=MeanInfPops+InfPopSE), width=0.0001) +
   geom_point() + ylab("Proportion of populations DFTD reaches") + xlab("Dispersal Probability") +
   facet_wrap(~ BiteProb) + theme_bw()
-
-
-
-beep()
