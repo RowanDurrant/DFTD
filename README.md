@@ -9,7 +9,7 @@ Contact me at: RowanG.Durrant@gmail.com
 
 ## Data generating scripts:
 - [forest script.R](R%20Code/forest%20script.R) : takes TASVEG landcover rasters and produces network topology & over patch related data
-- [extract densities.R](R%20Code/extract%20densities.R) : takes raster brick from Cunningham et al., 2021 and extracts the predicted devil densities from our patch locations.
+- [extract densities.R](R%20Code/extract%20densities.R) : takes raster brick from [Cunningham et al., 2021](https://doi.org/10.1111/ele.13703) and extracts the predicted devil densities from our patch locations.
 ### Dependencies:
 - TASVEG landcover data
 - Predicted devil densites from Cunningham et al., 2021
@@ -25,10 +25,15 @@ Contact me at: RowanG.Durrant@gmail.com
 
 
 ## Data processing scripts:
-- [2701 graph code.R](R%20Code/2701%20graph%20code.R) : produces figures 2, 3 and 4 from .rda files.
+- [2701 graph code.R](R%20Code/2701%20graph%20code.R) : produces figures 2 and 3 from .rda files.
+- [big map processing.R](R%20Code/big%20map%20processing.R) : processes .rda files to find best match to [Lazenby et al. (2018)'s](https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2664.13088) disease wave map, and then you can plot the results as figure 4.
+- [fragmentation graph code.R](R%20Code/fragmentation%20graph%20code.R) : produces figure 5 from .rda files from the patch isolation simulations.
+
 
 ### Dependencies: 
 - [ggplot2](https://ggplot2.tidyverse.org/)
+- [dry wet locations 5.csv](Data%20Files/dry%20wet%20locations%205.csv) : locations of patches for mapping
+- [disease front.csv](Data%20Files/disease%20front.csv) : the wave that each patch belongs to, based on the map from Lazenby et al., 2018.
 
 
 
