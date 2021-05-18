@@ -1,11 +1,14 @@
 library(ggplot2)
 library(viridis)
 library(extrafont)
+library(patchwork)
+library(beepr)
+
 
 ContactDistances = c(0.1,0.2,0.3,0.4,0.5)
 DispersalProbabilities = c(0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01)
-BP = c(0.2,0.3,0.4,0.5,0.6,0.7,0.8)
-R = 1:15
+BP = c(0.2,0.3,0.4,0.5,0.6,0.7)
+R = 1:20
 
 Time = 1:1820
 
@@ -17,16 +20,16 @@ for(A in ContactDistances){
     for(C in BP){
       for(D in R){
         
-        if(file.exists(paste0("100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda")) == T){
-          load(paste0("100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda"))
+        if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda")) == T){
+          load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_",B,"_Contact_",A,"_BP_",C,"_rep_",D,".rda"))
           
           popultotal = rep(0,1820)
           infectedstotal = rep(0,1820)
           infpops = 0
           for(w in 1:477){
             popultotal = popultotal + poplist[[w]]
-              infectedstotal = infectedstotal + inflist[[w]]
-              if(sum(inflist[[w]]) > 0){infpops = infpops + 1}
+            infectedstotal = infectedstotal + inflist[[w]]
+            if(sum(inflist[[w]]) > 0){infpops = infpops + 1}
           }
           
           NData3 = setNames(data.frame(matrix(ncol = 6, nrow = 1)), c("Infect.Dist", "DispProb", "BiteProb","PopMedian",  "InfMedian", "InfPops"))
@@ -70,12 +73,6 @@ for(A in ContactDistances){
   }
 }
 
-# write.csv(MData, file = "No DFTD q1 means se.csv")
-# write.csv(NData, file = "No DFTD q1 raw.csv")
-# 
-# MDataNoDFTD = read.csv("No DFTD q1 means se.csv")
-# MData = read.csv("q1 means se.csv")
-
 g1 = ggplot(data = MData, aes(x = DispProb, y = MeanPop, group = as.factor(Infect.Dist), 
                               color = as.factor(Infect.Dist))) 
 g1 = g1 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance", direction = -1) +
@@ -96,3 +93,7 @@ g3 = g3 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance",
   geom_errorbar(aes(ymin=MeanInfPops-InfPopSE, ymax=MeanInfPops+InfPopSE), width=0.0001) +
   geom_point() + ylab("Proportion of populations DFTD reaches") + xlab("Dispersal Probability") +
   facet_wrap(~ BiteProb) + theme_bw()
+
+
+
+beep()
