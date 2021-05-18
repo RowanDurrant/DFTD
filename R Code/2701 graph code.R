@@ -84,7 +84,7 @@ g2 = ggplot(data = MData, aes(x = DispProb, y = MeanInf, group = as.factor(Infec
                               color = as.factor(Infect.Dist))) 
 g2 = g2 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance", direction = -1) +
   geom_errorbar(aes(ymin=MeanInf-InfSE, ymax=MeanInf+InfSE), width=0.0001) +
-  geom_point() + ylab("Maximum Proportion Infected") + xlab("Dispersal Probability") +
+  geom_point() + ylab("Disease Prevalence") + xlab("Dispersal Probability") +
   facet_wrap(~ BiteProb) + theme_bw()
 
 g3 = ggplot(data = MData, aes(x = DispProb, y = MeanInfPops, group = as.factor(Infect.Dist), 
