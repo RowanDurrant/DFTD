@@ -6,7 +6,7 @@ library(ggnewscale)
 
 
 Z = c(10,20,30,40,50,60,70,80,90,100)
-R = 1:20
+R = 1:30
 Method = c("Betweenness", "Degree", "Random")
 
 Time = 1:1820
