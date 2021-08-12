@@ -227,16 +227,19 @@ g1 = ggplot(data = MData, aes(Z,MeanPop)) +
   ylab("Metapopulation size")  +
   geom_hline(yintercept = MDataNonIsolated$MeanPop, linetype = "dashed", colour= "grey") +
   geom_text(aes(70, MDataNonIsolated$MeanPop, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
-  theme(text=element_text(size=12,  family="Calibri"), legend.position="none", axis.title.x = element_blank()) 
+  ggtitle("A") +
+  theme(text=element_text(family="Calibri"), legend.position="none", axis.title.x = element_blank())
 
 g2 = ggplot(data = MData, aes(x = Z, y = MeanInf, colour = Method, group = Method)) +
+  geom_text(aes(70, MDataNonIsolated$MeanInf, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
   geom_point() + geom_line(size = 1)   + 
   geom_errorbar(aes(ymin=MeanInf-InfSE, ymax=MeanInf+InfSE, colour = Method), width=2) +
   theme_bw() + scale_color_viridis_d() + xlim(0,100) +
   ylab("Proportion of Patches Infected") + xlab("No. patches isolated") +
   geom_hline(yintercept = MDataNonIsolated$MeanInf, linetype = "dashed", colour= "grey") +
-  geom_text(aes(70, MDataNonIsolated$MeanInf, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
-  theme(text=element_text(size=12,  family="Calibri"), legend.position="none") 
+  
+  ggtitle("B") +
+  theme(text=element_text(family="Calibri"), legend.position="none") 
 
 
 g3 = ggplot(data = MData, aes(Z,MeanDivers)) +
@@ -252,9 +255,10 @@ g3 = ggplot(data = MData, aes(Z,MeanDivers)) +
   scale_color_grey("Without DFTD") +
   theme_bw() + 
   ylab("Metapopulation size")  +
+  ggtitle("C") +
   #geom_hline(yintercept = MDataNonIsolated$MeanDivers, linetype = "dashed", colour= "grey") +
   #geom_text(aes(70, MDataNonIsolated$MeanDivers, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
-  theme(text=element_text(size=12,  family="Calibri"),  axis.title.x = element_blank()) 
+  theme(text=element_text(family="Calibri"),  axis.title.x = element_blank()) 
 
 
 g1 + g2 + g3

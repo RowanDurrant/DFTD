@@ -113,6 +113,9 @@ zx = as.vector(z$x)
 zy = as.vector(z$y)
 y = cbind(zx,zy)
 
+#need this later for plots
+write.csv(z, file = "dry wet locations 5.csv")
+
 #get the inter-patch distances
 euclidDist <- sp::spDists(y)
 
@@ -154,8 +157,7 @@ write.csv(networkDF, file = "dry wet networktopology.csv")
 relations = read.csv("C:/Users/User/Desktop/MRes/Tasmanian Devils/dry wet networktopology.csv")
 g = graph.data.frame(relations, directed=F)
 
-#need this later for plots
-write.csv(z, file = "dry wet locations 5.csv")
+
 
 #do some cool igraph layouts
 meta <- data.frame("name"=1:nrow(z), 
@@ -170,11 +172,10 @@ plot.igraph(g,
      vertex.label = NA,
      edge.color = "lightgrey", 
      vertex.color = "grey",
-    # shape = "circle", 
-     size = 5, 
-     layout=lo   
-     #add = TRUE, 
-  #   rescale = FALSE
+     vertex.size = 5, 
+     layout=lo,
+    
+
   )
 
 
