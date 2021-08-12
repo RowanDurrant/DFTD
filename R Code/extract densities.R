@@ -1,5 +1,7 @@
 library(raster)
 
+##plantspdf1 comes from previous script "forest script.R"
+
 densities = list()
   map = brick("predictionStack_devils_1985to2035.tif")
 
@@ -8,14 +10,12 @@ for(i in 1:11){
 newmap = map[[i]]
 
 
-densities[[i]] <- raster::extract(newmap,             # raster layer
+densities[[i]] <- raster::extract(newmap,    
                             plantspdf1, 
-                            fun=mean,         # what to value to extract
+                            fun=mean,      
                             df=TRUE)
-#cent_max_df = as.data.frame(cent_max)
 }
 
-#write.csv(cent_max_df, file = "patch densities.csv")
 
   maxDensities = c()
 for(j in 1:477){
