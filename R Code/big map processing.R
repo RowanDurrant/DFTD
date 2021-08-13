@@ -130,8 +130,9 @@ ggplot() +
   geom_polygon(data = world3, aes(x=long, y = lat, group = group), fill="lightgrey") +
   theme_void() + 
   geom_point(data=NDataB,size = 3, shape = 16, aes(x=x, y=y, color=(MeanYear + 1996))) +
-  geom_point(data=NDataC, size = 3, shape = 15, aes(x=x, y=y, color=(MeanYear + 1996))) +
+  geom_point(data=NDataC, size = 3, shape = 15, aes(x=x, y=y), colour = "red") +
   scale_colour_viridis_c() + 
   labs(colour = "Mean year\nDFTD reaches\npopulation", breaks = c(1996, 2000, 2005, 2010, 2015, 2020))+
   scale_shape_identity() + theme(text=element_text(size=12,  family="Calibri"))
 
+ggsave("figure 4.tiff", dpi = 300)

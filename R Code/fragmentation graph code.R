@@ -226,12 +226,12 @@ g1 = ggplot(data = MData, aes(Z,MeanPop)) +
   theme_bw() + 
   ylab("Metapopulation size")  +
   geom_hline(yintercept = MDataNonIsolated$MeanPop, linetype = "dashed", colour= "grey") +
-  geom_text(aes(70, MDataNonIsolated$MeanPop, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
+  #geom_text(aes(70, MDataNonIsolated$MeanPop, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
   ggtitle("A") +
   theme(text=element_text(family="Calibri"), legend.position="none", axis.title.x = element_blank())
 
 g2 = ggplot(data = MData, aes(x = Z, y = MeanInf, colour = Method, group = Method)) +
-  geom_text(aes(70, MDataNonIsolated$MeanInf, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
+  #geom_text(aes(70, MDataNonIsolated$MeanInf, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
   geom_point() + geom_line(size = 1)   + 
   geom_errorbar(aes(ymin=MeanInf-InfSE, ymax=MeanInf+InfSE, colour = Method), width=2) +
   theme_bw() + scale_color_viridis_d() + xlim(0,100) +
@@ -261,5 +261,5 @@ g3 = ggplot(data = MData, aes(Z,MeanDivers)) +
   theme(text=element_text(family="Calibri"),  axis.title.x = element_blank()) 
 
 
-g1 + g2 + g3
-
+p = g1 + g2 + g3
+ggsave("figure 6.tiff", p, dpi = 300)

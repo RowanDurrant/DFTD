@@ -94,6 +94,10 @@ g3 = g3 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance",
   geom_point() + ylab("Proportion of populations DFTD reaches") + xlab("Dispersal Probability") +
   facet_wrap(~ BiteProb) + theme_bw()
 
+g1
+ggsave("figure 2.tiff", dpi = 300)
 
+g3
+ggsave("figure 3.tiff", dpi = 300)
 
 beep()

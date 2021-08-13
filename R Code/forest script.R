@@ -98,8 +98,17 @@ plantspdf$density = dens
 plantspdf$density[is.na(plantspdf$density)] <- 0
 plantspdf1 = plantspdf[plantspdf$density > 0.5,]
 
-plot(y, col = "lightgrey")
-plot(plantspdf1, col = plantspdf1$SHAPE_AREA, add = T)
+y = raster("raster_Tasmania_res500m.grd")
+
+dpi=600    #pixels per square inch
+tiff("figure 1a.tif", width=6*dpi, height=5*dpi, res=dpi)
+
+plot(y, col = "lightgrey", xaxt = "n", btn = "n",yaxt = "n", 
+     xlim = c(290000, 630000), ylim = c(5150000, 5510000), 
+     axes=FALSE)
+plot(plantspdf1, col = "black", add = T)
+
+dev.off()
 
 #get the central points of each patch
 trueCentroids = gCentroid(plantspdf1,byid=TRUE)
@@ -114,13 +123,13 @@ zy = as.vector(z$y)
 y = cbind(zx,zy)
 
 #need this later for plots
-write.csv(z, file = "dry wet locations 5.csv")
+#write.csv(z, file = "dry wet locations 5.csv")
 
 #get the inter-patch distances
 euclidDist <- sp::spDists(y)
 
 #need this for later
-write.csv(plantspdf1$SHAPE_AREA, file = "dry wet patch areas.csv")
+#write.csv(plantspdf1$SHAPE_AREA, file = "dry wet patch areas.csv")
 
 
 #loop that limits how far the devils can travel and also builds
@@ -141,7 +150,7 @@ for(i in 1:nrow(euclidDist)){
   }
 }
 
-write.csv(networkDF, file = "dry wet networktopology.csv")
+#write.csv(networkDF, file = "dry wet networktopology.csv")
 
 ## OKAY THIS IS VERY IMPORTANT
 ## YOU HAVE TO OPEN THE CSV IN EXCEL AND DELETE THE FIRST COLUMN WHICH IS JUST ROWNAMES
@@ -166,6 +175,9 @@ meta <- data.frame("name"=1:nrow(z),
 
 lo <- as.matrix(meta[,2:3])
 
+dpi=300    #pixels per square inch
+tiff("figure 1b.tiff", width=6*dpi, height=5*dpi, res=dpi)
+
 plot(map[[2]], col = "white",  xlim = c(290000, 630000))
 
 plot.igraph(g, 
@@ -178,4 +190,4 @@ plot.igraph(g,
 
   )
 
-
+dev.off()
