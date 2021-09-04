@@ -6,7 +6,7 @@ library(beepr)
 ContactDistances = c(0.1, 0.2, 0.3, 0.4, 0.5)
 DispersalProbabilities = c(0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01)
 BP = c(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8)
-R = 1:10
+R = 1:20
 
 PData = setNames(data.frame(matrix(ncol = 6, nrow = 0)), c("Pop", "Infect.Dist","DispProb", "BiteProb","week", "year"))
 for(A in ContactDistances){
@@ -68,12 +68,14 @@ for(A in ContactDistances){
         QData2$BiteProb[i] = C
         
         MeanYear = mean(PData[PData$Pop == i & PData$Infect.Dist == A & PData$DispProb == B & PData$BiteProb == C,]$year, na.rm = T)
-        if(is.na(MeanYear == T)){Wave = "Wave5"}
+        if(is.na(MeanYear == T)){Wave = "Wave7"}
         else if(MeanYear < 6){Wave = "Wave1"}
         else if(MeanYear >= 6 & MeanYear < 11){Wave = "Wave2"}
         else if(MeanYear >= 11 & MeanYear < 16){Wave = "Wave3"}
         else if(MeanYear >= 16 & MeanYear < 21){Wave = "Wave4"}
-        else if(MeanYear >= 21){Wave = "Wave5"}
+        else if(MeanYear >= 21 & MeanYear < 25){Wave = "Wave5"}
+        else if(MeanYear >= 25 & MeanYear < 27){Wave = "Wave6"}
+        else{Wave = "Wave7"}
         QData2$Wave[i] = Wave
       }
       QData = rbind(QData, QData2)
@@ -100,14 +102,14 @@ for(A in ContactDistances){
         if(RData[RData$Pop == i,]$Wave == diseasefront[diseasefront$Pop ==i,]$Wave){Matched = Matched + 1}
         else{}
       }
-      if(Matched > 300){print(paste(A, B, C, Matched))}
+      if(Matched > 320){print(paste(A, B, C, Matched))}
       }
     }
   }
 }
 beep()
 
-
+### [1] "0.1 0.009 0.4 322"
 
 y <- raster("raster_Tasmania_res500m.grd")
 y2 = clump(y)
@@ -119,7 +121,7 @@ SData = setNames(data.frame(matrix(ncol = 2, nrow = 477)), c("Pop", "MeanYear"))
 
 for(i in 1:477){
   SData$Pop[i] = i
-  SData$MeanYear[i] = mean(PData[PData$Pop == i & PData$Infect.Dist == 0.3 & PData$DispProb == 0.007 & PData$BiteProb == 0.4,]$year, na.rm = T)
+  SData$MeanYear[i] = mean(PData[PData$Pop == i & PData$Infect.Dist == 0.1 & PData$DispProb == 0.009 & PData$BiteProb == 0.4,]$year, na.rm = T)
 }
 
 NDataA = cbind(SData, data[,2:3], diseasefront[,2])

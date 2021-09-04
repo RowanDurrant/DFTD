@@ -392,8 +392,8 @@ Time = 1:(52*35)
 DFTDStart = 52*10 #when disease is introduced
 PatchIsolate = 52*20 #when patches are isolated
 
-A = 0.3
-B = 0.007
+A = 0.1
+B = 0.009
 BP = 0.4
 
 g = graph.data.frame(relations, directed=F)

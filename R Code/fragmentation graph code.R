@@ -254,7 +254,7 @@ g3 = ggplot(data = MData, aes(Z,MeanDivers)) +
   geom_errorbar(data = MDataNoDFTD, aes(ymin=MeanDivers-DiversSE, ymax=MeanDivers+DiversSE, colour = Method), width=2) +
   scale_color_grey("Without DFTD") +
   theme_bw() + 
-  ylab("Metapopulation size")  +
+  ylab("Mean Within-Population Genetic Variation")  +
   ggtitle("C") +
   #geom_hline(yintercept = MDataNonIsolated$MeanDivers, linetype = "dashed", colour= "grey") +
   #geom_text(aes(70, MDataNonIsolated$MeanDivers, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
@@ -262,4 +262,4 @@ g3 = ggplot(data = MData, aes(Z,MeanDivers)) +
 
 
 p = g1 + g2 + g3
-ggsave("figure 6.tiff", p, dpi = 300)
+ggsave("figure 6 square.tiff", p, dpi = 300)
