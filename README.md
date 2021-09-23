@@ -11,8 +11,8 @@ Contact me at: RowanG.Durrant@gmail.com
 - [forest script.R](R%20Code/forest%20script.R) : takes TASVEG landcover rasters and produces network topology & over patch related data
 - [extract densities.R](R%20Code/extract%20densities.R) : takes raster brick from [Cunningham et al., 2021](https://doi.org/10.1111/ele.13703) and extracts the predicted devil densities from our patch locations.
 ### Dependencies:
-- TASVEG landcover data
-- Predicted devil densites from Cunningham et al., 2021
+- [TASVEG landcover data](https://dpipwe.tas.gov.au/conservation/development-planning-conservation-assessment/planning-tools/monitoring-and-mapping-tasmanias-vegetation-%28tasveg%29/tasveg-the-digital-vegetation-map-of-tasmania)
+- Predicted devil densites from [Cunningham et al., 2021](https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13703)
 
 ## Main simulation scripts:
 - [main sim.R](R%20Code/main%20sim.R) : Base version of the metapopulation model code with density-independent dispersal. Runs a devil metapopulation system for 1820 weekly time steps, introducing DFTD at week 520, and outputs an .rda file containing time series of population size, no. individuals infected, etc. for each local population.
