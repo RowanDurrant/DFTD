@@ -11,12 +11,13 @@ Contact me at: RowanG.Durrant@gmail.com
 - [forest script.R](R%20Code/forest%20script.R) : takes TASVEG landcover rasters and produces network topology & over patch related data
 - [extract densities.R](R%20Code/extract%20densities.R) : takes raster brick from [Cunningham et al., 2021](https://doi.org/10.1111/ele.13703) and extracts the predicted devil densities from our patch locations.
 ### Dependencies:
-- TASVEG landcover data
-- Predicted devil densites from Cunningham et al., 2021
+- [TASVEG landcover data](https://dpipwe.tas.gov.au/conservation/development-planning-conservation-assessment/planning-tools/monitoring-and-mapping-tasmanias-vegetation-%28tasveg%29/tasveg-the-digital-vegetation-map-of-tasmania)
+- Predicted devil densites from [Cunningham et al., 2021](https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13703)
 
 ## Main simulation scripts:
 - [main sim.R](R%20Code/main%20sim.R) : Base version of the metapopulation model code with density-independent dispersal. Runs a devil metapopulation system for 1820 weekly time steps, introducing DFTD at week 520, and outputs an .rda file containing time series of population size, no. individuals infected, etc. for each local population.
 - [Degree.R](R%20Code/Degree.R), [Betweenness.R](R%20Code/Betweenness.R) & [Random.R](R%20Code/Random.R) : As above, but isolating patches at t=1040 based on their degree, their betweenness or at random, respectively. Also includes a function to calculate a measure of genetic diversity. 
+- [Degree-noDFTD.R](R%20Code/Degree-noDFTD.R), [Betweenness-noDFTD.R](R%20Code/Betweenness-noDFTD.R) & [Random-noDFTD.R](R%20Code/Random-noDFTD.R) : As above, but without DFTD being introduced to the system.
 
 ### Dependencies: 
 - [igraph](https://igraph.org/r/) 
