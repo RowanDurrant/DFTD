@@ -20,8 +20,8 @@ for(M in Method){
   for(C in Z){
     for(D in R){
       
-      if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/",M,"_rep_",D,"_step_",C,".rda")) == T){
-        load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/",M,"_rep_",D,"_step_",C,".rda"))
+      if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/0309 files/",M,"_rep_",D,"_step_",C,".rda")) == T){
+        load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/0309 files/",M,"_rep_",D,"_step_",C,".rda"))
         
         totinf = rep(0,1820)
         for(r in 1:477){
@@ -98,8 +98,8 @@ for(M in Method){
   for(C in Z){
     for(D in R){
       
-      if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/",M,"_noDFTD_rep_",D,"_step_",C,".rda")) == T){
-        load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/",M,"_noDFTD_rep_",D,"_step_",C,".rda"))
+      if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/0309 files/",M,"_noDFTD_rep_",D,"_step_",C,".rda")) == T){
+        load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/0309 files/",M,"_noDFTD_rep_",D,"_step_",C,".rda"))
         totinf = rep(0,1820)
         for(r in 1:477){
           totinf = totinf + inflist[[r]]
@@ -173,16 +173,17 @@ NDataNonIsolated = setNames(data.frame(matrix(ncol = 2, nrow = 0)), c("PopMedian
 MDataNonIsolated = setNames(data.frame(matrix(ncol = 4, nrow = 1)), c("MeanPop", "PopSE", "MeanInf", "InfSE"))
 
 
-for(q in 1:10){
+for(q in 1:30){
   
-  if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_0.007_Contact_0.3_BP_0.4_rep_",q,".rda"))){
-    load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_0.007_Contact_0.3_BP_0.4_rep_",q,".rda"))
+  if(file.exists(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_0.009_Contact_0.1_BP_0.4_rep_",q,".rda"))){
+    print(q)
+    load(paste0("C:/Users/User/Desktop/MRes/Tasmanian Devils/hoo boi big files/2403 files/100_Year_Density_Disp_0.009_Contact_0.1_BP_0.4_rep_",q,".rda"))
     
     totinf = rep(0,1820)
     for(r in 1:477){
       totinf = totinf + inflist[[r]]
     }
-    if(totinf[1040] == 0){break()}
+  
     
     
     infpops = 0
@@ -204,10 +205,10 @@ for(q in 1:10){
   
 }
 
-MDataNonIsolated$MeanPop = mean(NDataNonIsolated$PopMedian)
-MDataNonIsolated$PopSE = sd(NDataNonIsolated$PopMedian)/sqrt(nrow(NDataNonIsolated))
-MDataNonIsolated$MeanInf = mean(NDataNonIsolated$InfMedian)
-MDataNonIsolated$InfSE = sd(NDataNonIsolated$InfMedian)/sqrt(nrow(NDataNonIsolated))
+MDataNonIsolated$MeanPop = mean(NDataNonIsolated$PopMedian[NDataNonIsolated$InfMedian>0.1])
+MDataNonIsolated$PopSE = sd(NDataNonIsolated$PopMedian[NDataNonIsolated$InfMedian>0.1])/sqrt(nrow(NDataNonIsolated[NDataNonIsolated$InfMedian>0.1,]))
+MDataNonIsolated$MeanInf = mean(NDataNonIsolated$InfMedian[NDataNonIsolated$InfMedian>0.1])
+MDataNonIsolated$InfSE = sd(NDataNonIsolated$InfMedian[NDataNonIsolated$InfMedian>0.1])/sqrt(nrow(NDataNonIsolated[NDataNonIsolated$InfMedian>0.1,]))
 
 
 #GRAPHS --------------------------------------------------------------------
