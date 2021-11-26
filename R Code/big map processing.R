@@ -90,6 +90,9 @@ data <- read.csv(file = "dry wet locations 5.csv", header = T)
 diseasefront = read.csv(file = "disease front.csv", header = T)
 names(diseasefront) = c("Pop", "Wave")
 
+percentageMatches = setNames(data.frame(matrix(ncol = 4, nrow = 0)), c("Infect.Dist","DispProb", "BiteProb","Matches"))
+
+
 for(A in ContactDistances){
   for(B in DispersalProbabilities){
     
@@ -103,6 +106,13 @@ for(A in ContactDistances){
         else{}
       }
       if(Matched > 320){print(paste(A, B, C, Matched))}
+      percentageMatches2 = setNames(data.frame(matrix(ncol = 4, nrow = 1)), c("Infect.Dist","DispProb", "BiteProb","Matches"))
+      percentageMatches2$Infect.Dist = A
+      percentageMatches2$DispProb = B
+      percentageMatches2$BiteProb = C
+      percentageMatches2$Matches = Matched
+      
+      percentageMatches = rbind(percentageMatches, percentageMatches2)
       }
     }
   }

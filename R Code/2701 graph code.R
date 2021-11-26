@@ -78,21 +78,21 @@ g1 = ggplot(data = MData, aes(x = DispProb, y = MeanPop, group = as.factor(Infec
 g1 = g1 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance", direction = -1) +
   geom_errorbar(aes(ymin=MeanPop-PopSE, ymax=MeanPop+PopSE), width=0.0001) +
   geom_point() + ylab("Metapopulation Size") + xlab("Dispersal Probability") +
-  facet_wrap(~ BiteProb) + theme_bw()
+  facet_wrap(~ BiteProb) + theme_bw() + theme(legend.position = 'bottom')
 
 g2 = ggplot(data = MData, aes(x = DispProb, y = MeanInf, group = as.factor(Infect.Dist), 
                               color = as.factor(Infect.Dist))) 
 g2 = g2 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance", direction = -1) +
   geom_errorbar(aes(ymin=MeanInf-InfSE, ymax=MeanInf+InfSE), width=0.0001) +
   geom_point() + ylab("Disease Prevalence") + xlab("Dispersal Probability") +
-  facet_wrap(~ BiteProb) + theme_bw()
+  facet_wrap(~ BiteProb) + theme_bw()+ theme(legend.position = 'bottom')
 
 g3 = ggplot(data = MData, aes(x = DispProb, y = MeanInfPops, group = as.factor(Infect.Dist), 
                               color = as.factor(Infect.Dist))) 
 g3 = g3 + geom_line(size = 1) + scale_color_viridis_d(name = "Contact Distance", direction = -1) +
   geom_errorbar(aes(ymin=MeanInfPops-InfPopSE, ymax=MeanInfPops+InfPopSE), width=0.0001) +
   geom_point() + ylab("Proportion of populations DFTD reaches") + xlab("Dispersal Probability") +
-  facet_wrap(~ BiteProb) + theme_bw()
+  facet_wrap(~ BiteProb) + theme_bw()+ theme(legend.position = 'bottom')
 
 g1
 ggsave("figure 2.tiff", dpi = 300)
