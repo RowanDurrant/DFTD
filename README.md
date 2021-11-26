@@ -34,7 +34,7 @@ Contact me at: RowanG.Durrant@gmail.com
 ### Dependencies: 
 - [ggplot2](https://ggplot2.tidyverse.org/)
 - [dry wet locations 5.csv](Data%20Files/dry%20wet%20locations%205.csv) : locations of patches for mapping
-- [disease front.csv](Data%20Files/disease%20front.csv) : the wave that each patch belongs to, based on the map from Lazenby et al., 2018.
+- [disease front.csv](Data%20Files/disease%20front.csv) : the 5-year wave that each patch belongs to, based on the map from Lazenby et al., 2018 and additional data from Rodrigo Hamede.
 
 
 
