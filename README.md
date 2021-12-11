@@ -6,6 +6,7 @@ Author: Rowan Durrant - Department of Biosciences, Swansea University
 
 Contact me at: RowanG.Durrant@gmail.com
 
+Paper now available [here!](https://www.mdpi.com/2076-0817/10/12/1592)
 
 ## Data generating scripts:
 - [forest script.R](R%20Code/forest%20script.R) : takes TASVEG landcover rasters and produces network topology & over patch related data
