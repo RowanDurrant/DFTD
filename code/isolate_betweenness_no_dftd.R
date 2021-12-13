@@ -13,7 +13,7 @@ if (argc < 2) {
   Z = as.numeric(argv[2]);
 }
 # Parameters --------------------------------------------------------------
-patchData = read.csv(file = "dry wet patch areas.csv")
+patchData = read.csv(file = "data/dry_wet_patch_areas.csv")
 patchAreas = patchData$area / 1000000
 patchDims = sqrt(patchAreas)
 
@@ -37,7 +37,7 @@ DispDist = 5
 
 # import network topology ------------------------------------------------------
 
-relations = read.csv("dry wet networktopology.csv")
+relations = read.csv("data/dry_wet_networktopology.csv")
 g = graph.data.frame(relations, directed=F)
 g$AdjList = get.adjlist(g, mode="out")
 
@@ -281,13 +281,13 @@ RunModel = function(TumGrRate, DispDist, A, B, BP, K, MaxAge, patchDims, Sex, st
     }
     if(t == PatchIsolate){
       nodes = V(g)
-      degree = degree(g)
-      nodebet = cbind(nodes, degree)
+      betweenness = betweenness(g)
+      nodebet = cbind(nodes, betweenness)
       nodebet = data.frame(nodebet)
-      nodebet = nodebet[order(nodebet$degree), ]
+      nodebet = nodebet[order(nodebet$betweenness), ]
       removenodes = tail(nodebet, Z)$nodes
       
-      removeedges = E(g)[ from(removenodes) ]
+      removeedges = E(g)[ from(removenodes) ] 
       
       g = delete_edges(g, removeedges)
       g$AdjList = get.adjlist(g, mode="out") 
@@ -380,7 +380,7 @@ RunModel = function(TumGrRate, DispDist, A, B, BP, K, MaxAge, patchDims, Sex, st
   NData2$Edges[1] = ecount(g)
   NData2$GenDiv[1] =  median(tail(islanddiversity, 520))
   
-  save(agelist, sexlist, poplist, inflist, indslist, diverselist, NData2, file=paste0("Degree_noDFTD_rep_",R,"_step_",Z,".rda"))
+  save(agelist, sexlist, poplist, inflist, indslist, diverselist, NData2, file=paste0("Betweenness_noDFTD_rep_",R,"_step_",Z,".rda"))
   
 }
 
