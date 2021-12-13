@@ -4,7 +4,7 @@ Date created: 26/02/2021
 
 Author: Rowan Durrant - Department of Biosciences, Swansea University 
 
-Contact me at: RowanG.Durrant@gmail.com
+Contact me at: r.durrant.1@research.gla.ac.uk
 
 Paper now available [here!](https://www.mdpi.com/2076-0817/10/12/1592)
 
