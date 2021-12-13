@@ -217,8 +217,8 @@ g1 = ggplot(data = MData, aes(Z,MeanPop)) +
   geom_point(data = MData, aes(x = Z, y = MeanPop, colour = Method, group = Method)) + 
   geom_line(data = MData,aes(x = Z, y = MeanPop, colour = Method, group = Method),size = 1)+ xlim(0,100) +
   geom_errorbar(data = MData,aes(ymin=MeanPop-PopSE, ymax=MeanPop+PopSE, colour = Method), width=2) +
-  scale_color_viridis_d() +
-  
+  scale_color_viridis_d() + scale_y_continuous(label=comma) +
+  ggtitle("A") +
   new_scale_color() +
   geom_point(data = MDataNoDFTD, aes(x = Z, y = MeanPop, colour = Method, group = Method)) + 
   geom_line(data = MDataNoDFTD, aes(x = Z, y = MeanPop, colour = Method, group = Method),size = 1)+ 
@@ -227,10 +227,9 @@ g1 = ggplot(data = MData, aes(Z,MeanPop)) +
   theme_bw() + 
   ylab("Metapopulation size")  +
   geom_hline(yintercept = MDataNonIsolated$MeanPop, linetype = "dashed", colour= "grey") +
-  #geom_text(aes(70, MDataNonIsolated$MeanPop, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
-  ggtitle("A") +
   theme(text=element_text(family="Calibri"), legend.position="none", axis.title.x = element_blank())
-
+  #geom_text(aes(70, MDataNonIsolated$MeanPop, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
+  
 g2 = ggplot(data = MData, aes(x = Z, y = MeanInf, colour = Method, group = Method)) +
   #geom_text(aes(70, MDataNonIsolated$MeanInf, label = "Non-isolated mean"), colour = "grey", vjust = -0.5) +
   geom_point() + geom_line(size = 1)   + 
